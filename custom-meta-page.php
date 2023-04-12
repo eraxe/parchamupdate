@@ -3,7 +3,7 @@
  * Template Name: Custom Meta Edit Page
  */
 
-require_once 'woocommerce-api.php'; // Replace with the correct path to the WooCommerce API library file
+ require_once __DIR__ . '/wc-api-php/src/WooCommerce/Client.php';
 
 // Check if the user is logged in
 if (!is_user_logged_in()) {
@@ -26,10 +26,10 @@ get_header();
 $product_id = 8636;
 
 // Set up the WooCommerce API client
-$woocommerce = new WooCommerce_API(array(
-    'url' => 'https://yourwebsite.com', // Replace with your website URL
-    'consumer_key' => 'your_consumer_key', // Replace with your WooCommerce API consumer key
-    'consumer_secret' => 'your_consumer_secret', // Replace with your WooCommerce API consumer secret
+$woocommerce = new WooCommerce\Client(array(
+    'url' => 'https://donyayeparcham.com', // Replace with your website URL
+    'consumer_key' => 'ck_cc3e85fbcd3b7e493b5ad50b123147a7eca9859f', // Replace with your WooCommerce API consumer key
+    'consumer_secret' => 'cs_728bc3a48037630c69b2e570929aa6acf732b0ed', // Replace with your WooCommerce API consumer secret
     'wp_api' => true,
     'version' => 'wc/v3',
 ));
