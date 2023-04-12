@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['price']) && isset($_P
 get_header();
 
 $product_id = 8636;
-
+$product_data = $woocommerce->get("products/{$product_id}");
 // Set up the WooCommerce API client
 $woocommerce = new WooCommerce\Client(array(
     'url' => 'https://donyayeparcham.com', // Replace with your website URL
@@ -40,7 +40,7 @@ try {
 } catch (Exception $e) {
     wp_die("Error fetching product data: " . $e->getMessage());
 }
-
+$attributes = $product_data->attributes;
 // Extract the data from the product data
 $multiple_radiobuttons_options_value = [
     // ...
@@ -49,7 +49,15 @@ $multiple_radiobuttons_options_value = [
 $multiple_radiobuttons_options_price = [
     // ...
 ];
+foreach ($attributes as $attribute) {
+    if ($attribute->name == 'multiple_radiobuttons_options_value') {
+        $multiple_radiobuttons_options_value = json_decode($attribute->options[0], true);
+    }
 
+    if ($attribute->name == 'multiple_radiobuttons_options_price') {
+        $multiple_radiobuttons_options_price = json_decode($attribute->options[0], true);
+    }
+}
 // Generate the forms
 ?>
 <div class="container">
