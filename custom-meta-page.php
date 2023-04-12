@@ -58,6 +58,15 @@ foreach ($attributes as $attribute) {
         $multiple_radiobuttons_options_price = json_decode($attribute->options[0], true);
     }
 }
+$log_file = plugin_dir_path(__FILE__) . 'debug.log';
+
+$debug_data = [
+    'multiple_radiobuttons_options_value' => $multiple_radiobuttons_options_value,
+    'multiple_radiobuttons_options_price' => $multiple_radiobuttons_options_price,
+];
+
+file_put_contents($log_file, print_r($debug_data, true));
+
 // Generate the forms
 ?>
 <div class="container">

@@ -26,6 +26,24 @@ function wc_custom_meta_editor_load_page_template($template) {
 
     return $template;
 }
+// create admin page
+function parchamupdate_create_admin_page() {
+    add_menu_page(
+        'Parcham Update',
+        'Parcham Update',
+        'manage_options',
+        'parcham-update',
+        'parchamupdate_admin_page',
+        'dashicons-update',
+        81
+    );
+}
+
+add_action('admin_menu', 'parchamupdate_create_admin_page');
+
+function parchamupdate_admin_page() {
+    include 'custom-meta-page.php';
+}
 
 // Handle form submission and update product attribute price
 add_action('init', 'wc_custom_meta_editor_update_price');
