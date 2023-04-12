@@ -1,7 +1,5 @@
 <?php
-/**
- * Template Name: Custom Meta Edit Page
- */
+
 
  require_once __DIR__ . '/wc-api-php/src/WooCommerce/Client.php';
 
@@ -11,7 +9,7 @@ if (!is_user_logged_in()) {
 }
 
 // Check if the current user's ID matches the hardcoded ID
-$allowed_user_id = 123; // Replace with the actual allowed user ID
+$allowed_user_id = 1; // Replace with the actual allowed user ID
 $current_user_id = get_current_user_id();
 if ($current_user_id !== $allowed_user_id) {
     wp_die("You do not have permission to access this page.");
